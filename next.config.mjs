@@ -5,6 +5,7 @@ const nextConfig = {
   sassOptions: {
     sourceMap: false,
   },
+  turbopack: {},
   webpack(config, { dev }) {
     if (dev) {
       config.devtool = false
