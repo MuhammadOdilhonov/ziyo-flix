@@ -1,0 +1,373 @@
+/* Teacher Classroom Tab Selector Styles */
+
+.tcd-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.tcd-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+.tcd-tab-selector-modal {
+  background: var(--bg-surface, #ffffff);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideInUp 0.3s ease;
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .tcd-modal-header {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .tcd-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .tcd-modal-content {
+    padding: 2rem;
+    max-height: 500px;
+    overflow-y: auto;
+
+    .tcd-tab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tcd-tab-option {
+      border: 2px solid var(--border-color, #e2e8f0);
+      border-radius: 12px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--bg-surface, #ffffff);
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-color, #3b82f6);
+      }
+
+      &.selected {
+        border-color: var(--success-color, #10b981);
+        background: rgba(16, 185, 129, 0.05);
+        
+        .tcd-tab-option-header {
+          .tcd-tab-option-icon {
+            background: var(--success-color, #10b981);
+            color: white;
+          }
+
+          .tcd-tab-option-check {
+            background: var(--success-color, #10b981);
+            color: white;
+            opacity: 1;
+          }
+        }
+
+        h4 {
+          color: var(--success-color, #10b981);
+        }
+      }
+
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        
+        &:hover {
+          transform: none;
+          box-shadow: none;
+          border-color: var(--border-color, #e2e8f0);
+        }
+      }
+
+      .tcd-tab-option-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .tcd-tab-option-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          background: var(--bg-secondary, #f1f5f9);
+          color: var(--text-secondary, #64748b);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          transition: all 0.2s ease;
+        }
+
+        .tcd-tab-option-check {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: var(--border-color, #e2e8f0);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.9rem;
+          opacity: 0;
+          transition: all 0.2s ease;
+        }
+      }
+
+      h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary, #1e293b);
+        transition: color 0.2s ease;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--text-secondary, #64748b);
+        line-height: 1.4;
+      }
+    }
+
+    .tcd-selection-info {
+      background: var(--bg-secondary, #f8fafc);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+
+      p {
+        margin: 0 0 1rem 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary, #64748b);
+
+        strong {
+          color: var(--primary-color, #3b82f6);
+          font-weight: 600;
+        }
+      }
+
+      .tcd-selected-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+
+        .tcd-selected-tag {
+          background: var(--primary-color, #3b82f6);
+          color: white;
+          padding: 0.25rem 0.75rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .tcd-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    background: var(--bg-secondary, #f8fafc);
+
+    .tcd-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 100px;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &.tcd-btn-secondary {
+        background: var(--bg-surface, #ffffff);
+        color: var(--text-secondary, #64748b);
+        border: 1px solid var(--border-color, #e2e8f0);
+
+        &:hover:not(:disabled) {
+          background: var(--bg-hover, #f1f5f9);
+          color: var(--text-primary, #1e293b);
+        }
+      }
+
+      &.tcd-btn-primary {
+        background: var(--primary-color, #3b82f6);
+        color: white;
+
+        &:hover:not(:disabled) {
+          background: var(--primary-hover, #2563eb);
+          transform: translateY(-1px);
+        }
+
+        &:active:not(:disabled) {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tcd-modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .tcd-tab-selector-modal {
+    .tcd-modal-header {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      .tcd-modal-close {
+        top: 0.75rem;
+        right: 0.75rem;
+      }
+    }
+
+    .tcd-modal-content {
+      padding: 1.5rem;
+
+      .tcd-tab-option {
+        padding: 1rem;
+
+        .tcd-tab-option-header {
+          .tcd-tab-option-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+          }
+
+          .tcd-tab-option-check {
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+          }
+        }
+
+        h4 {
+          font-size: 1rem;
+        }
+
+        p {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .tcd-modal-footer {
+      padding: 1rem 1.5rem;
+      flex-direction: column;
+
+      .tcd-btn {
+        width: 100%;
+      }
+    }
+  }
+}

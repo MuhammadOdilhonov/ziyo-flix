@@ -1,0 +1,726 @@
+// Student Questions - Professional SCSS
+
+.student-questions {
+    .sq-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        gap: 1rem;
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+    }
+
+    .sq-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .sq-header-info {
+            h2 {
+                font-size: 1.75rem;
+                font-weight: 700;
+                color: var(--text-primary);
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                color: var(--text-secondary);
+            }
+        }
+
+        .sq-ask-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px var(--border-color);
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .sq-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        text-align: center;
+        padding: 3rem;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+
+        svg {
+            width: 80px;
+            height: 80px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        span {
+            color: var(--text-secondary);
+        }
+    }
+
+    .sq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .sq-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--border-color);
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 24px var(--border-color);
+            }
+
+            .sq-card-header {
+                padding: 1.25rem;
+                background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                border-bottom: 1px solid var(--border-color);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .sq-student {
+                    display: flex;
+                    gap: 0.75rem;
+                    align-items: center;
+
+                    .sq-student-avatar {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                        border: 2px solid white;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                            color: white;
+                        }
+                    }
+
+                    .sq-student-info {
+                        h4 {
+                            font-size: 1rem;
+                            font-weight: 700;
+                            color: var(--text-primary);
+                            margin-bottom: 0.25rem;
+                        }
+
+                        span {
+                            font-size: 0.875rem;
+                            color: var(--primary-500);
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                .sq-card-menu {
+                    position: relative;
+
+                    .sq-menu-btn {
+                        width: 36px;
+                        height: 36px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: transparent;
+                        border: none;
+                        border-radius: 0.5rem;
+                        color: var(--text-secondary);
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background: var(--bg-secondary);
+                            color: var(--text-primary);
+                        }
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                    .sq-menu-dropdown {
+                        position: absolute;
+                        top: calc(100% + 0.5rem);
+                        right: 0;
+                        background: var(--bg-surface);
+                        border: 1px solid var(--border-color);
+                        border-radius: 0.75rem;
+                        box-shadow: 0 10px 25px var(--border-color);
+                        min-width: 180px;
+                        z-index: 100;
+                        overflow: hidden;
+                        animation: slideDown 0.2s ease;
+
+                        button {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.75rem;
+                            padding: 0.875rem 1rem;
+                            background: transparent;
+                            border: none;
+                            color: var(--text-primary);
+                            font-weight: 600;
+                            text-align: left;
+                            cursor: pointer;
+                            transition: all 0.2s ease;
+
+                            svg {
+                                width: 18px;
+                                height: 18px;
+                            }
+
+                            &:hover {
+                                background: var(--bg-secondary);
+                            }
+
+                            &.danger {
+                                color: var(--error-500);
+
+                                &:hover {
+                                    background: var(--error-400);
+                                }
+                            }
+
+                            &:not(:last-child) {
+                                border-bottom: 1px solid var(--border-color);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .sq-card-body {
+                padding: 1.25rem;
+
+                h3 {
+                    font-size: 1.125rem;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                    margin-bottom: 0.75rem;
+                }
+
+                .sq-description {
+                    color: var(--text-secondary);
+                    line-height: 1.6;
+                    margin-bottom: 1rem;
+                }
+
+                .sq-files {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    margin-bottom: 1rem;
+
+                    .sq-file {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        padding: 0.75rem;
+                        background: var(--bg-secondary);
+                        border-radius: 0.5rem;
+                        color: var(--text-primary);
+                        text-decoration: none;
+                        font-weight: 500;
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background: var(--bg-secondary);
+                            color: var(--primary-500);
+                        }
+
+                        svg {
+                            width: 18px;
+                            height: 18px;
+                            color: var(--primary-500);
+                        }
+                    }
+                }
+
+                .sq-meta {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.75rem;
+                    background: var(--bg-secondary);
+                    border-radius: 0.5rem;
+                    margin-bottom: 1rem;
+
+                    .sq-date {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        color: var(--text-secondary);
+                        font-size: 0.875rem;
+
+                        svg {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    .sq-status {
+                        padding: 0.25rem 0.75rem;
+                        border-radius: 0.5rem;
+                        font-size: 0.75rem;
+                        font-weight: 700;
+
+                        &.pending {
+                            background: rgba(245, 158, 11, 0.15);
+                            color: #f59e0b;
+                        }
+
+                        &.graded {
+                            background: rgba(16, 185, 129, 0.15);
+                            color: #10b981;
+                        }
+
+                        &.late {
+                            background: rgba(239, 68, 68, 0.15);
+                            color: #ef4444;
+                        }
+                    }
+                }
+
+                .sq-question {
+                    padding: 1rem;
+                    background: var(--bg-secondary);
+                    border-radius: 0.75rem;
+                    margin-bottom: 1rem;
+
+                    h3 {
+                        font-size: 1.125rem;
+                        font-weight: 700;
+                        color: var(--text-primary);
+                        margin-bottom: 0.5rem;
+                    }
+
+                    p {
+                        color: var(--text-secondary);
+                        line-height: 1.6;
+                    }
+                }
+
+                .sq-answer {
+                    padding: 1.25rem;
+                    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));
+                    border-left: 4px solid #10b981;
+                    border-radius: 0.75rem;
+
+                    .sq-answer-header {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        margin-bottom: 1rem;
+
+                        .sq-teacher-avatar {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            background: linear-gradient(135deg, #10b981, #059669);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            overflow: hidden;
+                            border: 2px solid white;
+                            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+                            flex-shrink: 0;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                                color: white;
+                            }
+                        }
+
+                        div {
+                            h4 {
+                                font-weight: 700;
+                                color: #10b981;
+                                font-size: 0.875rem;
+                                margin-bottom: 0.125rem;
+                            }
+
+                            span {
+                                font-size: 0.75rem;
+                                color: var(--text-secondary);
+                            }
+                        }
+                    }
+
+                    p {
+                        color: var(--text-primary);
+                        line-height: 1.6;
+                        padding-left: 3rem;
+                    }
+                }
+
+                .sq-no-answer {
+                    padding: 1rem;
+                    background: rgba(245, 158, 11, 0.05);
+                    border-left: 4px solid #f59e0b;
+                    border-radius: 0.75rem;
+                    text-align: center;
+
+                    span {
+                        color: #f59e0b;
+                        font-weight: 600;
+                        font-size: 0.875rem;
+                    }
+                }
+            }
+
+            .sq-card-footer {
+                padding: 1rem 1.25rem;
+                border-top: 1px solid var(--border-color);
+                background: var(--bg-secondary);
+
+                .sq-grade-btn {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem;
+                    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                    color: white;
+                    border: none;
+                    border-radius: 0.5rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    svg {
+                        width: 18px;
+                        height: 18px;
+                    }
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+                    }
+                }
+            }
+        }
+    }
+
+    // Modal
+    .sq-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-surface);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 1rem;
+        animation: fadeIn 0.2s ease;
+    }
+
+    .sq-modal {
+        background: var(--bg-surface);
+        border-radius: 1rem;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: 0 25px 50px var(--border-color);
+        animation: slideUp 0.3s ease;
+
+        .sq-modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--text-primary);
+            }
+
+            .sq-modal-close {
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--bg-secondary);
+                border: none;
+                border-radius: 0.5rem;
+                color: var(--text-secondary);
+                cursor: pointer;
+                font-size: 1.5rem;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: var(--error-400);
+                    color: var(--error-500);
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .sq-modal-question {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+
+            .sq-student {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                margin-bottom: 1rem;
+            }
+
+            .sq-question-content {
+                padding: 1rem;
+                background: var(--bg-secondary);
+                border-radius: 0.75rem;
+                margin-top: 1rem;
+
+                p {
+                    color: var(--text-primary);
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        .sq-modal-student {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+
+            .sq-student-avatar {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border: 3px solid white;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                svg {
+                    width: 30px;
+                    height: 30px;
+                    color: white;
+                }
+            }
+
+            h4 {
+                font-size: 1.125rem;
+                font-weight: 700;
+                color: var(--text-primary);
+                margin-bottom: 0.25rem;
+            }
+
+            p {
+                color: var(--text-secondary);
+                font-size: 0.875rem;
+            }
+        }
+
+        .sq-modal-form {
+            padding: 1.5rem;
+
+            .sq-form-group {
+                margin-bottom: 1.5rem;
+
+                label {
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--text-primary);
+                }
+
+                input,
+                textarea {
+                    width: 100%;
+                    padding: 0.75rem;
+                    background: var(--bg-surface);
+                    border: 1px solid var(--border-color);
+                    border-radius: 0.5rem;
+                    color: var(--text-primary);
+                    font-size: 1rem;
+                    font-family: inherit;
+                    transition: all 0.2s ease;
+
+                    &:focus {
+                        outline: none;
+                        border-color: var(--primary-500);
+                        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+                    }
+                }
+
+                textarea {
+                    resize: vertical;
+                }
+
+                .sq-hint {
+                    display: block;
+                    margin-top: 0.5rem;
+                    font-size: 0.875rem;
+                    color: var(--text-secondary);
+                }
+            }
+
+            .sq-modal-actions {
+                display: flex;
+                gap: 1rem;
+                margin-top: 2rem;
+
+                button {
+                    flex: 1;
+                    padding: 0.75rem;
+                    border: none;
+                    border-radius: 0.5rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .sq-btn-cancel {
+                    background: var(--bg-secondary);
+                    color: var(--text-primary);
+
+                    &:hover {
+                        background: var(--border-color);
+                    }
+                }
+
+                .sq-btn-submit {
+                    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                    color: white;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// Responsive
+@media (max-width: 768px) {
+    .teacher-questions {
+        .sq-list {
+            gap: 1rem;
+        }
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

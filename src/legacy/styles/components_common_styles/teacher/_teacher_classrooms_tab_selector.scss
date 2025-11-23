@@ -1,0 +1,487 @@
+/* Teacher Classrooms Tab Selector Styles */
+
+.tc-action-btn.tab-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  span {
+    font-weight: 600;
+  }
+
+  svg {
+    font-size: 1rem;
+  }
+}
+
+.tc-tab-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+.tc-tab-selector-modal {
+  background: var(--bg-surface, #ffffff);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideInUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .tc-tab-modal-header {
+    position: relative;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+
+    h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .tc-tab-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .tc-tab-modal-content {
+    padding: 2.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+
+    .tc-tab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .tc-tab-option {
+      border: 2px solid var(--border-color, #e2e8f0);
+      border-radius: 16px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--bg-surface, #ffffff);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-color, #667eea);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      &.selected {
+        border-color: var(--success-color, #10b981);
+        background: rgba(16, 185, 129, 0.05);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
+        
+        &::before {
+          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+          opacity: 1;
+        }
+
+        .tc-tab-option-header {
+          .tc-tab-option-icon {
+            background: var(--success-color, #10b981);
+            color: white;
+            transform: scale(1.1);
+          }
+
+          .tc-tab-option-check {
+            background: var(--success-color, #10b981);
+            color: white;
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        h4 {
+          color: var(--success-color, #10b981);
+          font-weight: 700;
+        }
+      }
+
+      &.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        
+        &:hover {
+          transform: none;
+          box-shadow: none;
+          border-color: var(--border-color, #e2e8f0);
+
+          &::before {
+            opacity: 0;
+          }
+        }
+      }
+
+      .tc-tab-option-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        .tc-tab-option-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 16px;
+          background: var(--bg-secondary, #f1f5f9);
+          color: var(--text-secondary, #64748b);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.75rem;
+          transition: all 0.3s ease;
+        }
+
+        .tc-tab-option-check {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: var(--border-color, #e2e8f0);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          opacity: 0;
+          transform: scale(0.8);
+          transition: all 0.3s ease;
+        }
+      }
+
+      h4 {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary, #1e293b);
+        transition: all 0.3s ease;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary, #64748b);
+        line-height: 1.5;
+      }
+    }
+
+    .tc-tab-selection-info {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border-color, #e2e8f0);
+
+      .tc-selection-counter {
+        margin-bottom: 1.5rem;
+
+        span {
+          font-size: 1rem;
+          color: var(--text-secondary, #64748b);
+
+          strong {
+            color: var(--primary-color, #667eea);
+            font-weight: 700;
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      .tc-selected-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+
+        .tc-selected-tag {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 25px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+          transition: all 0.2s ease;
+
+          &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+          }
+
+          svg {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+
+  .tc-tab-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    background: var(--bg-secondary, #f8fafc);
+
+    .tc-tab-btn {
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      position: relative;
+      overflow: hidden;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+
+      &.tc-tab-btn-cancel {
+        background: var(--bg-surface, #ffffff);
+        color: var(--text-secondary, #64748b);
+        border: 2px solid var(--border-color, #e2e8f0);
+
+        &:hover:not(:disabled) {
+          background: var(--bg-hover, #f1f5f9);
+          color: var(--text-primary, #1e293b);
+          border-color: var(--text-secondary, #64748b);
+          transform: translateY(-1px);
+        }
+      }
+
+      &.tc-tab-btn-save {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        &:hover:not(:disabled) {
+          background: linear-gradient(135deg, #059669 0%, #047857 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+
+          &::before {
+            left: 100%;
+          }
+        }
+
+        &:active:not(:disabled) {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tc-tab-modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .tc-action-btn.tab-selector {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+
+    span {
+      display: none;
+    }
+  }
+
+  .tc-tab-selector-modal {
+    .tc-tab-modal-header {
+      padding: 2rem 1.5rem;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .tc-tab-modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .tc-tab-modal-content {
+      padding: 1.5rem;
+
+      .tc-tab-option {
+        padding: 1.5rem;
+
+        .tc-tab-option-header {
+          .tc-tab-option-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 1.5rem;
+          }
+
+          .tc-tab-option-check {
+            width: 24px;
+            height: 24px;
+            font-size: 0.9rem;
+          }
+        }
+
+        h4 {
+          font-size: 1.1rem;
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
+      }
+
+      .tc-tab-selection-info {
+        padding: 1.5rem;
+
+        .tc-selected-tabs {
+          gap: 0.5rem;
+
+          .tc-selected-tag {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .tc-tab-modal-footer {
+      padding: 1.5rem;
+      flex-direction: column;
+
+      .tc-tab-btn {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+}

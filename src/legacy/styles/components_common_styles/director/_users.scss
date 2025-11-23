@@ -1,0 +1,175 @@
+.director-users {
+    padding: var(--spacing-lg);
+
+    .users-header {
+        margin-bottom: var(--spacing-xl);
+
+        h1 {
+            color: var(--text-primary);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+        }
+    }
+
+    .users-controls {
+        display: flex;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+
+        .search-box,
+        .filter-box {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+
+            svg {
+                color: var(--text-secondary);
+                font-size: 18px;
+            }
+
+            input,
+            select {
+                border: none;
+                background: transparent;
+                color: var(--text-primary);
+                font-size: var(--font-size-base);
+                outline: none;
+                min-width: 200px;
+
+                &::placeholder {
+                    color: var(--text-secondary);
+                }
+            }
+        }
+    }
+
+    .users-table {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-lg);
+        overflow: hidden;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th,
+            td {
+                padding: var(--spacing-md);
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            th {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                font-weight: var(--font-weight-semibold);
+                font-size: var(--font-size-sm);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            td {
+                color: var(--text-primary);
+                font-size: var(--font-size-base);
+            }
+
+            .user-info {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-sm);
+
+                .user-avatar {
+                    width: 32px;
+                    height: 32px;
+                    background: var(--primary-color);
+                    color: var(--primary-text);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: var(--font-weight-semibold);
+                    font-size: var(--font-size-sm);
+                }
+            }
+
+            .role-badge,
+            .status-badge {
+                padding: var(--spacing-xs) var(--spacing-sm);
+                border-radius: var(--border-radius-sm);
+                font-size: var(--font-size-xs);
+                font-weight: var(--font-weight-medium);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .role-badge {
+                &.role-user {
+                    background: var(--success-bg);
+                    color: var(--success-color);
+                }
+
+                &.role-teacher {
+                    background: var(--warning-bg);
+                    color: var(--warning-color);
+                }
+
+                &.role-admin {
+                    background: var(--primary-bg);
+                    color: var(--primary-color);
+                }
+            }
+
+            .status-badge {
+                &.status-active {
+                    background: var(--success-bg);
+                    color: var(--success-color);
+                }
+
+                &.status-blocked {
+                    background: var(--danger-bg);
+                    color: var(--danger-color);
+                }
+            }
+
+            .actions {
+                display: flex;
+                gap: var(--spacing-xs);
+
+                .action-btn {
+                    width: 32px;
+                    height: 32px;
+                    border: none;
+                    background: var(--bg-secondary);
+                    color: var(--text-secondary);
+                    border-radius: var(--border-radius-sm);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background: var(--primary-color);
+                        color: var(--primary-text);
+                    }
+
+                    &.danger:hover {
+                        background: var(--danger-color);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

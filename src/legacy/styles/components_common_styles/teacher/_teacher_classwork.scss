@@ -1,0 +1,820 @@
+// Teacher Classwork - To'liq SCSS
+
+.teacher-classwork {
+    .tcw-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+        gap: 1rem;
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+    }
+
+    .tcw-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .tcw-header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            .tcw-topic-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1.5rem;
+                background: linear-gradient(135deg, #10b981, #059669);
+                color: white;
+                border: none;
+                border-radius: 0.75rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+                }
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        .tcw-create-dropdown {
+            position: relative;
+
+            .tcw-create-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1.5rem;
+                background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                color: white;
+                border: none;
+                border-radius: 0.75rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 25px var(--primary-500);
+                }
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .tcw-create-menu {
+                position: absolute;
+                top: calc(100% + 0.5rem);
+                right: 0;
+                background: var(--bg-surface);
+                border: 1px solid var(--border-color);
+                border-radius: 0.75rem;
+                box-shadow: 0 10px 25px var(--border-color);
+                min-width: 220px;
+                z-index: 100;
+                overflow: hidden;
+                animation: slideDown 0.2s ease;
+
+                button {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 1rem 1.25rem;
+                    background: transparent;
+                    border: none;
+                    color: var(--text-primary);
+                    font-weight: 600;
+                    text-align: left;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        color: var(--primary-500);
+                    }
+
+                    &:hover {
+                        background: var(--bg-secondary);
+                    }
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid var(--border-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .tcw-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .tcw-topic {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--border-color);
+
+            .tcw-topic-header {
+                padding: 1.5rem;
+                background: var(--bg-secondary);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h3 {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                }
+
+                .tcw-topic-menu {
+                    padding: 0.5rem;
+                    background: transparent;
+                    border: none;
+                    color: var(--text-secondary);
+                    cursor: pointer;
+                    border-radius: 0.375rem;
+                    transition: all 0.2s ease;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    &:hover {
+                        background: var(--bg-surface);
+                        color: var(--text-primary);
+                    }
+                }
+            }
+
+            .tcw-items {
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .tcw-empty {
+                    text-align: center;
+                    padding: 2rem;
+                    color: var(--text-secondary);
+                }
+
+                .tcw-item {
+                    display: flex;
+                    gap: 1rem;
+                    padding: 1.25rem;
+                    background: var(--bg-surface);
+                    border: 1px solid var(--border-color);
+                    border-radius: 0.75rem;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        box-shadow: 0 4px 12px var(--border-color);
+                        transform: translateY(-2px);
+                    }
+
+                    .tcw-item-icon {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 0.75rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-shrink: 0;
+
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+
+                    &.tcw-item-material .tcw-item-icon {
+                        background: rgba(59, 130, 246, 0.1);
+                        color: #3b82f6;
+                    }
+
+                    &.tcw-item-assignment .tcw-item-icon {
+                        background: rgba(16, 185, 129, 0.1);
+                        color: #10b981;
+                    }
+
+                    &.tcw-item-question .tcw-item-icon {
+                        background: rgba(245, 158, 11, 0.1);
+                        color: #f59e0b;
+                    }
+
+                    &.tcw-item-quiz .tcw-item-icon {
+                        background: rgba(139, 92, 246, 0.1);
+                        color: #8b5cf6;
+                    }
+
+                    .tcw-item-content {
+                        flex: 1;
+
+                        h4 {
+                            font-size: 1.125rem;
+                            font-weight: 600;
+                            color: var(--text-primary);
+                            margin-bottom: 0.5rem;
+                        }
+
+                        p {
+                            color: var(--text-secondary);
+                            font-size: 0.875rem;
+                            line-height: 1.5;
+                            margin-bottom: 0.75rem;
+                        }
+
+                        .tcw-item-meta {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            flex-wrap: wrap;
+
+                            .tcw-item-due,
+                            .tcw-item-points,
+                            .tcw-item-info {
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 0.25rem;
+                                font-size: 0.875rem;
+
+                                svg {
+                                    width: 16px;
+                                    height: 16px;
+                                }
+                            }
+
+                            .tcw-item-due {
+                                color: var(--text-secondary);
+                            }
+
+                            .tcw-item-points {
+                                font-weight: 600;
+                                color: var(--primary-500);
+                            }
+
+                            .tcw-item-info {
+                                color: var(--text-secondary);
+                            }
+                        }
+                    }
+
+                    .tcw-item-menu {
+                        padding: 0.5rem;
+                        background: transparent;
+                        border: none;
+                        color: var(--text-secondary);
+                        cursor: pointer;
+                        border-radius: 0.375rem;
+                        transition: all 0.2s ease;
+                        align-self: flex-start;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        &:hover {
+                            background: var(--bg-secondary);
+                            color: var(--text-primary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Modal
+    .tcw-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-secondary);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 1rem;
+        animation: fadeIn 0.2s ease;
+    }
+
+    .tcw-modal {
+        background: var(--bg-surface);
+        border-radius: 1rem;
+        width: 100%;
+        max-width: 700px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 50px var(--border-color);
+        animation: slideUp 0.3s ease;
+
+        .tcw-modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-surface);
+            z-index: 10;
+
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--text-primary);
+            }
+
+            .tcw-modal-close {
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--bg-secondary);
+                border: none;
+                border-radius: 0.5rem;
+                color: var(--text-secondary);
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &:hover {
+                    background: var(--bg-secondary);
+                    color: var(--text-primary);
+                }
+            }
+        }
+
+        .tcw-modal-form {
+            padding: 1.5rem;
+
+            .tcw-form-group {
+                margin-bottom: 1.5rem;
+
+                label {
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--text-primary);
+                    font-size: 0.875rem;
+                }
+
+                input,
+                textarea,
+                select {
+                    width: 100%;
+                    padding: 0.75rem;
+                    background: var(--bg-surface);
+                    border: 1px solid var(--border-color);
+                    border-radius: 0.5rem;
+                    color: var(--text-primary);
+                    font-size: 1rem;
+                    font-family: inherit;
+                    transition: all 0.2s ease;
+
+                    &:focus {
+                        outline: none;
+                        border-color: var(--primary-500);
+                        box-shadow: 0 0 0 3px var(--primary-500);
+                    }
+
+                    &::placeholder {
+                        color: var(--text-secondary);
+                    }
+                }
+
+                textarea {
+                    resize: vertical;
+                    min-height: 100px;
+                }
+
+                .tcw-form-hint {
+                    margin-top: 0.5rem;
+                    font-size: 0.875rem;
+                    color: var(--text-secondary);
+                }
+            }
+
+            .tcw-form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .tcw-file-upload {
+                .tcw-upload-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem 1.25rem;
+                    background: var(--bg-secondary);
+                    border: 2px dashed var(--border-color);
+                    border-radius: 0.5rem;
+                    color: var(--text-primary);
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    width: 100%;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    &:hover {
+                        border-color: var(--primary-500);
+                        background: rgba(59, 130, 246, 0.05);
+                        color: var(--primary-500);
+                    }
+                }
+
+                .tcw-upload-hint {
+                    margin-top: 0.5rem;
+                    font-size: 0.875rem;
+                    color: var(--text-secondary);
+                    text-align: center;
+                }
+            }
+
+            .tcw-quiz-note {
+                padding: 1rem;
+                background: var(--bg-secondary);
+                border-left: 4px solid var(--primary-500);
+                border-radius: 0.5rem;
+                margin-top: 1rem;
+
+                p {
+                    color: var(--text-primary);
+                    font-size: 0.875rem;
+                    line-height: 1.5;
+                    margin: 0;
+                }
+            }
+
+            .tcw-modal-actions {
+                display: flex;
+                gap: 1rem;
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--border-color);
+
+                button {
+                    flex: 1;
+                    padding: 0.75rem 1.5rem;
+                    border: none;
+                    border-radius: 0.5rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .tcw-btn-cancel {
+                    background: var(--bg-secondary);
+                    color: var(--text-primary);
+
+                    &:hover {
+                        background: var(--border-color);
+                    }
+                }
+
+                .tcw-btn-submit {
+                    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+                    color: white;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 25px var(--primary-500);
+                    }
+
+                    &:disabled {
+                        opacity: 0.5;
+                        cursor: not-allowed;
+                        transform: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // Topic Modal
+    .tcw-topic-modal {
+        background: var(--bg-surface);
+        border-radius: 1.25rem;
+        width: 100%;
+        max-width: 550px;
+        box-shadow: 0 25px 50px var(--border-color);
+        animation: slideUp 0.3s ease;
+        overflow: hidden;
+
+        .tcw-modal-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 2rem 1.5rem;
+            border-bottom: none;
+
+            h2 {
+                color: var(--text-primary);
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin: 0;
+            }
+
+            .tcw-modal-close {
+                background: var(--bg-secondary);
+                color: var(--text-primary);
+                backdrop-filter: blur(10px);
+                border: 1px solid var(--border-color);
+
+                &:hover {
+                    background: var(--border-color);
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .tcw-modal-form {
+            padding: 2rem 1.5rem;
+
+            .tcw-form-group {
+                margin-bottom: 1.5rem;
+
+                label {
+                    display: block;
+                    margin-bottom: 0.75rem;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                    font-size: 0.9375rem;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 0.875rem 1rem;
+                    background: var(--bg-surface);
+                    border: 2px solid var(--border-color);
+                    border-radius: 0.75rem;
+                    color: var(--text-primary);
+                    font-size: 1rem;
+                    transition: all 0.2s ease;
+
+                    &:focus {
+                        outline: none;
+                        border-color: #10b981;
+                        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+                    }
+                }
+
+                .tcw-form-hint {
+                    display: block;
+                    margin-top: 0.5rem;
+                    font-size: 0.8125rem;
+                    color: var(--text-secondary);
+                    font-style: italic;
+                }
+            }
+
+            .tcw-topic-examples {
+                padding: 1.5rem;
+                background: linear-gradient(135deg, var(--bg-secondary), var(--bg-secondary));
+                border: 1px solid var(--border-color);
+                border-radius: 1rem;
+                margin-bottom: 1.5rem;
+
+                p {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    &::before {
+                        content: "💡";
+                        font-size: 1.25rem;
+                    }
+                }
+
+                .tcw-example-chips {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.75rem;
+
+                    .tcw-example-chip {
+                        padding: 0.625rem 1.25rem;
+                        background: var(--bg-surface);
+                        border: 2px solid var(--border-color);
+                        border-radius: 0.75rem;
+                        color: var(--text-primary);
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background: linear-gradient(135deg, #10b981, #059669);
+                            border-color: #059669;
+                            color: white;
+                            transform: translateY(-3px) scale(1.05);
+                            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+                        }
+
+                        &:active {
+                            transform: translateY(-1px) scale(1.02);
+                        }
+                    }
+                }
+            }
+
+            .tcw-modal-actions {
+                display: flex;
+                gap: 1rem;
+                margin-top: 2rem;
+
+                button {
+                    flex: 1;
+                    padding: 0.875rem 1.5rem;
+                    border-radius: 0.75rem;
+                    font-weight: 700;
+                    font-size: 0.9375rem;
+                    transition: all 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                }
+
+                .tcw-btn-cancel {
+                    background: var(--bg-secondary);
+                    color: var(--text-primary);
+                    border: 2px solid var(--border-color);
+
+                    &:hover {
+                        background: var(--border-color);
+                        transform: translateY(-2px);
+                    }
+                }
+
+                .tcw-btn-submit {
+                    background: linear-gradient(135deg, #10b981, #059669);
+                    color: white;
+                    border: none;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// Responsive
+@media (max-width: 768px) {
+    .teacher-classwork {
+        .tcw-header {
+            flex-direction: column;
+            align-items: stretch;
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .tcw-create-dropdown {
+                .tcw-create-btn {
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .tcw-create-menu {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
+        .tcw-content .tcw-topic {
+            .tcw-items .tcw-item {
+                padding: 1rem;
+
+                .tcw-item-icon {
+                    width: 40px;
+                    height: 40px;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+                .tcw-item-content {
+                    h4 {
+                        font-size: 1rem;
+                    }
+
+                    .tcw-item-meta {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        .tcw-modal {
+            .tcw-modal-form {
+                .tcw-form-row {
+                    grid-template-columns: 1fr;
+                }
+
+                .tcw-modal-actions {
+                    flex-direction: column;
+
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

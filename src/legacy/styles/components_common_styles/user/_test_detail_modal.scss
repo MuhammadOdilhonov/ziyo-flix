@@ -1,0 +1,336 @@
+// Test Detail Modal Styles
+.test-detail-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+
+    .test-detail-modal {
+        background: var(--bg-surface);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 700px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow:  var(--shadow);
+        border: 1px solid var(--bg-hover);
+
+        
+
+        @media (max-width: 768px) {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        // Header
+        .test-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid var(--bg-hover);
+            position: sticky;
+            top: 0;
+            background: var(--bg-surface);
+            z-index: 10;
+
+           
+
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+                color: var(--text-primary);
+                margin: 0;
+
+                
+            }
+
+            .test-modal-close {
+                background: none;
+                border: none;
+                font-size: 28px;
+                color: var(--text-primary);
+                cursor: pointer;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: var(--color-danger);
+                }
+            }
+        }
+
+        // Loading State
+        .test-modal-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border: 4px solid var(--bg-hover);
+                border-top-color: #3b82f6;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+
+              
+            }
+
+            p {
+                font-size: 16px;
+                color: var(--text-primary);
+                margin-top: 16px;
+
+            }
+        }
+
+        // Content
+        .test-modal-content {
+            padding: 24px;
+
+            // Info Header
+            .test-info-header {
+                margin-bottom: 32px;
+                padding-bottom: 24px;
+                border-bottom: 2px solid var(--bg-hover);
+
+                .test-score-display {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    margin-bottom: 20px;
+
+                    @media (max-width: 480px) {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+
+                    .score-badge {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 32px;
+                        font-weight: 800;
+                        color: var(--text-primary);
+                        flex-shrink: 0;
+
+                        &.passed {
+                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                        }
+
+                        &.failed {
+                            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                        }
+                    }
+
+                    .score-info {
+                        flex: 1;
+
+                        h3 {
+                            font-size: 20px;
+                            font-weight: 700;
+                            color: var(--text-primary);
+                            margin: 0 0 4px 0;
+                        }
+
+                        p {
+                            font-size: 14px;
+                            color: var(--text-primary);
+                            margin: 0;
+                        }
+                    }
+                }
+
+                .test-meta {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 16px;
+
+                    .meta-item {
+                        .meta-label {
+                            display: block;
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: var(--text-primary);
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                            margin-bottom: 4px;
+
+                           
+                        }
+
+                        .meta-value {
+                            display: block;
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: var(--text-primary);
+
+                            &.passed {
+                                color: #10b981;
+                            }
+
+                            &.failed {
+                                color: #ef4444;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Questions
+            .test-questions {
+                h4 {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                    margin: 0 0 16px 0;
+                }
+
+                .question-item {
+                    margin-bottom: 24px;
+                    padding: 16px;
+                    background: var(--bg-surface);
+                    border-radius: 12px;
+                    border: 1px solid var(--bg-hover);
+
+                   
+
+                    .question-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 12px;
+
+                        .question-number {
+                            font-size: 13px;
+                            font-weight: 600;
+                            color: var(--text-primary);
+                            text-transform: uppercase;
+                        }
+
+                        .question-status {
+                            font-size: 13px;
+                            font-weight: 600;
+                            padding: 4px 12px;
+                            border-radius: 6px;
+
+                            &.correct {
+                                background: #d1fae5;
+                                color: #065f46;
+
+                               
+                            }
+
+                            &.incorrect {
+                                background: #fee2e2;
+                                color: #7f1d1d;
+
+                               
+                            }
+                        }
+                    }
+
+                    .question-text {
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: var(--text-primary);
+                        margin: 0 0 16px 0;
+
+                        
+                    }
+
+                    .options-list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+
+                        .option-item {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            padding: 12px;
+                            background: var(--bg-surface);
+                            border: 1px solid var(--bg-hover);
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+
+                            
+
+                            &.selected {
+                                background: #89b7f3;
+                                border-color: #3b82f6;
+
+                               
+                            }
+
+                            &.correct {
+                                background: #2ef08c;
+                                border-color: #10b981;
+
+                               
+                            }
+
+                            .option-indicator {
+                                width: 24px;
+                                height: 24px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                font-weight: 700;
+                                flex-shrink: 0;
+
+                                .selected-mark {
+                                    color: #3b82f6;
+                                }
+
+                                .correct-mark {
+                                    color: #10b981;
+                                }
+                            }
+
+                            .option-text {
+                                font-size: 14px;
+                                color: var(--text-primary);
+                                flex: 1;
+
+                               
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Error State
+        .test-modal-error {
+            padding: 60px 20px;
+            text-align: center;
+
+            p {
+                font-size: 16px;
+                color: #ef4444;
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,564 @@
+// Director Reports Styles
+.director-reports {
+    padding: var(--space-6);
+    width: 100%;
+
+    .dr__header {
+        margin-bottom: var(--space-8);
+
+        h1 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+        }
+    }
+
+    .dr__section {
+        margin-bottom: var(--space-8);
+    }
+
+    .dr__section-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+        padding-bottom: var(--space-3);
+        border-bottom: 2px solid var(--border-color);
+
+        svg {
+            font-size: 28px;
+            color: var(--primary-600);
+        }
+
+        h2 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+        }
+    }
+
+    // Users by Role
+    .dr__users-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-4);
+    }
+
+    .dr__user-card {
+        background: var(--bg-surface);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-5);
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-normal);
+        border-left: 4px solid var(--role-color);
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+    }
+
+    .dr__user-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: var(--radius-full);
+        background: linear-gradient(135deg, var(--role-color), var(--role-color));
+        opacity: 0.7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        svg {
+            position: absolute;
+            font-size: 28px;
+            color: var(--text-primary);
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    .dr__user-info {
+        flex: 1;
+
+        h3 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--role-color);
+            margin-bottom: var(--space-1);
+        }
+
+        p {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            font-weight: var(--font-weight-medium);
+        }
+    }
+
+    // Content Statistics
+    .dr__content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-4);
+    }
+
+    .dr__content-card {
+        background: var(--bg-surface);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-normal);
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        &--courses {
+            border-top: 4px solid #f59e0b;
+        }
+
+        &--videos {
+            border-top: 4px solid #8b5cf6;
+        }
+
+        &--channels {
+            border-top: 4px solid #10b981;
+        }
+    }
+
+    .dr__content-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: var(--radius-xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--space-4);
+
+        svg {
+            font-size: 28px;
+            z-index: 1;
+        }
+
+        .dr__content-card--courses & {
+            background: rgba(245, 158, 11, 0.2);
+            svg { color: #f59e0b; }
+        }
+
+        .dr__content-card--videos & {
+            background: rgba(139, 92, 246, 0.2);
+            svg { color: #8b5cf6; }
+        }
+
+        .dr__content-card--channels & {
+            background: rgba(16, 185, 129, 0.2);
+            svg { color: #10b981; }
+        }
+    }
+
+    .dr__content-info {
+        h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+        }
+    }
+
+    .dr__content-stats {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .dr__stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-2);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+    }
+
+    .dr__stat-label {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        font-weight: var(--font-weight-medium);
+    }
+
+    .dr__stat-value {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-primary);
+
+        &--success {
+            color: #10b981;
+        }
+    }
+
+    // Financial Overview
+    .dr__financial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-4);
+    }
+
+    .dr__financial-card {
+        background: var(--bg-surface);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-6);
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-normal);
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        &--income {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        &--expense {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        &--transactions {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+    }
+
+    .dr__financial-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: var(--radius-xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            font-size: 32px;
+            z-index: 1;
+        }
+
+        .dr__financial-card--income & {
+            background: rgba(16, 185, 129, 0.3);
+            svg { color: #10b981; }
+        }
+
+        .dr__financial-card--expense & {
+            background: rgba(239, 68, 68, 0.3);
+            svg { color: #ef4444; }
+        }
+
+        .dr__financial-card--transactions & {
+            background: rgba(59, 130, 246, 0.3);
+            svg { color: #3b82f6; }
+        }
+    }
+
+    .dr__financial-info {
+        flex: 1;
+    }
+
+    .dr__financial-label {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        font-weight: var(--font-weight-medium);
+        margin-bottom: var(--space-2);
+    }
+
+    .dr__financial-value {
+        font-size: var(--font-size-3xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-primary);
+
+        .dr__financial-card--income & {
+            color: #10b981;
+        }
+
+        .dr__financial-card--expense & {
+            color: #ef4444;
+        }
+
+        .dr__financial-card--transactions & {
+            color: #3b82f6;
+        }
+    }
+
+    // Transaction Types
+    .dr__transactions-grid {
+        display: grid;
+        gap: var(--space-3);
+    }
+
+    .dr__transaction-card {
+        background: var(--bg-surface);
+        border-radius: var(--radius-xl);
+        padding: var(--space-4);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-fast);
+
+        &:hover {
+            box-shadow: var(--shadow-md);
+        }
+    }
+
+    .dr__transaction-bar {
+        width: 100%;
+        height: 8px;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        margin-bottom: var(--space-3);
+    }
+
+    .dr__transaction-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        border-radius: var(--radius-full);
+        transition: width 0.6s ease;
+    }
+
+    .dr__transaction-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dr__transaction-label {
+        font-size: var(--font-size-base);
+        color: var(--text-primary);
+        font-weight: var(--font-weight-medium);
+    }
+
+    .dr__transaction-stats {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .dr__transaction-count {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bold);
+        color: var(--primary-600);
+    }
+
+    .dr__transaction-percent {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        padding: var(--space-1) var(--space-2);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+    }
+
+    // Last Transaction
+    .dr__last-transaction {
+        background: var(--bg-surface);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-md);
+        display: flex;
+        gap: var(--space-4);
+    }
+
+    .dr__last-transaction-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(79, 70, 229, 0.05));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            font-size: 32px;
+            color: var(--primary-600);
+            z-index: 1;
+        }
+    }
+
+    .dr__last-transaction-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .dr__last-transaction-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: var(--space-2);
+        border-bottom: 1px solid var(--border-color);
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+
+    .dr__last-transaction-label {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        font-weight: var(--font-weight-medium);
+    }
+
+    .dr__last-transaction-value {
+        font-size: var(--font-size-base);
+        color: var(--text-primary);
+        font-weight: var(--font-weight-semibold);
+
+        &--amount {
+            color: var(--primary-600);
+            font-size: var(--font-size-lg);
+        }
+    }
+
+    // Loading & Empty States
+    .dr__loading,
+    .dr__empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-12);
+        text-align: center;
+
+        svg {
+            font-size: 64px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary-600);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: var(--space-4);
+        }
+
+        p {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+        }
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    // Dark mode
+    @media (prefers-color-scheme: dark) {
+        .dr__user-card,
+        .dr__content-card,
+        .dr__financial-card,
+        .dr__transaction-card,
+        .dr__last-transaction {
+            background: var(--bg-secondary);
+        }
+    }
+
+    // Mobile responsive
+    @media (max-width: 768px) {
+        padding: var(--space-4);
+
+        .dr__header {
+            margin-bottom: var(--space-6);
+
+            h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            p {
+                font-size: var(--font-size-base);
+            }
+        }
+
+        .dr__section {
+            margin-bottom: var(--space-6);
+        }
+
+        .dr__section-header {
+            svg {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        .dr__users-grid,
+        .dr__content-grid,
+        .dr__financial-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .dr__user-card {
+            padding: var(--space-4);
+        }
+
+        .dr__user-icon {
+            width: 48px;
+            height: 48px;
+
+            svg {
+                font-size: 24px;
+            }
+        }
+
+        .dr__user-info h3 {
+            font-size: var(--font-size-2xl);
+        }
+
+        .dr__financial-icon {
+            width: 48px;
+            height: 48px;
+
+            svg {
+                font-size: 24px;
+            }
+        }
+
+        .dr__financial-value {
+            font-size: var(--font-size-2xl);
+        }
+
+        .dr__last-transaction {
+            flex-direction: column;
+        }
+
+        .dr__last-transaction-icon {
+            width: 48px;
+            height: 48px;
+
+            svg {
+                font-size: 24px;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+@import './home_sections_inside/home_sections_inside.scss';
+@import './_reels.scss';
+@import './_reels-comment.scss';
+@import './_tutorials.scss';
+@import './_tutorialDetail.scss';
+@import './_tutorial-category.scss';
+@import './tutorials/_tutorial_purchase.scss';
+@import './_video-player-page.scss';
+@import './_test-page.scss';
+@import './_assignment-page.scss';
+@import './_movies.scss';
+@import './_movie-category.scss';
+@import './_movie-detail.scss';
+@import './_video-player.scss';
+@import './_hls-video-player.scss';
+@import './_channels.scss';
+@import './_search.scss';
+@import './_file_viewer.scss';
+@import './_file_permission_settings.scss';
+
+@import './_channel-detail.scss';
+
+// siderbar
+@import './Sidebar/_sidebar.scss';
+@import './Sidebar/_sidebar-media.scss';
+
+// admin
+@import './admin/common_admin_style.scss';
+
+// director
+@import './director/common_director_style.scss';
+
+// teacher
+@import './teacher/common_teacher_style.scss';
+
+// user
+@import './user/common_user_style.scss';
+
+// settings
+@import './_settings.scss';

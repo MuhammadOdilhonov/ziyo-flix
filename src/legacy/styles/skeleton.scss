@@ -1,0 +1,89 @@
+$shimmer-base: rgba(255,255,255,0.08);
+$shimmer-highlight: rgba(255,255,255,0.22);
+$card-bg: rgba(255,255,255,0.06);
+$card-border: rgba(255,255,255,0.08);
+$text-dim: rgba(255,255,255,0.7);
+
+@keyframes shimmerMove {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  display: block;
+  background: linear-gradient(90deg, $shimmer-base 25%, $shimmer-highlight 37%, $shimmer-base 63%);
+  background-size: 400% 100%;
+  animation: shimmerMove 1.2s ease-in-out infinite;
+}
+
+.skeleton-lines {
+  display: grid;
+}
+
+// Common skeleton presets
+.skeleton-card {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $card-bg;
+  border: 1px solid $card-border;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  margin: 0; // prevent extra outer gaps
+
+  // default inner padding for content-only cards
+  &.p-16 { padding: 16px; }
+  &.p-12 { padding: 12px; }
+  &.compact { padding: 10px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.14); }
+}
+
+// Radius utilities for Skeleton component wrappers
+.rounded-8 { border-radius: 8px !important; overflow: hidden; }
+.rounded-12 { border-radius: 12px !important; overflow: hidden; }
+.rounded-16 { border-radius: 16px !important; overflow: hidden; }
+
+// Header + meta layout helpers
+.skeleton-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.skeleton-meta-row {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+// Empty state unified style
+.empty-state-card {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: $card-bg;
+  border: 1px solid $card-border;
+  color: $text-dim;
+
+  h3 {
+    margin: 0 0 6px 0;
+    color: #fff;
+    font-weight: 600;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+// Responsive helpers used by different sections
+.grid-skeleton {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .skeleton-card { border-radius: 12px; }
+  .grid-skeleton { gap: 12px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}

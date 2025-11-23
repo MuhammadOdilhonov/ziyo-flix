@@ -1,0 +1,376 @@
+// Banner Variables
+$primary-gradient: linear-gradient(90deg, #00ff00, #007bff);
+$primary-hover: linear-gradient(90deg, #00cc00, #0056b3);
+$secondary-color: rgba(255, 255, 255, 0.2);
+$secondary-hover: rgba(255, 255, 255, 0.3);
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.8);
+$overlay-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1200px;
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    overflow: hidden;
+
+    @media (max-width: $tablet) {
+        height: 70vh;
+        min-height: 400px;
+    }
+
+    @media (max-width: $mobile) {
+        height: 60vh;
+        min-height: 350px;
+    }
+
+    &__container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all 0.8s ease-in-out;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $overlay-gradient;
+            z-index: 1;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+        z-index: 1;
+    }
+
+    &__content {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        z-index: 3;
+
+        @media (max-width: $tablet) {
+            padding: 0 4%;
+            justify-content: center;
+        }
+
+        @media (max-width: $mobile) {
+            padding: 0 3%;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+    }
+
+    &__info {
+        margin-top: 110px;
+        max-width: 600px;
+        animation: slideInLeft 1s ease-out;
+
+        @media (max-width: $tablet) {
+            max-width: 500px;
+
+        }
+
+        @media (max-width: $mobile) {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__studio-logo {
+        height: 30px;
+        margin-bottom: 10px;
+
+        @media (max-width: $mobile) {
+            height: 25px;
+        }
+    }
+
+    &__title {
+        font-size: 4rem;
+        font-weight: 900;
+        color: $text-primary;
+        margin: 0 0 20px 0;
+        line-height: 1.1;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+        @media (max-width: $desktop) {
+            font-size: 3.5rem;
+        }
+
+        @media (max-width: $tablet) {
+            font-size: 3rem;
+        }
+
+        @media (max-width: $mobile) {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__description {
+        font-size: 18px;
+        color: $text-secondary;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        max-width: 500px;
+
+        @media (max-width: $tablet) {
+            font-size: 16px;
+            margin: 0 auto 25px auto;
+        }
+
+        @media (max-width: $mobile) {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        @media (max-width: $mobile) {
+            width: 100%;
+            height: 70px;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+
+        @media (max-width: $tablet) {
+            padding: 12px 25px;
+            font-size: 15px;
+        }
+
+        @media (max-width: $mobile) {
+            width: 200px;
+            justify-content: center;
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        &--primary {
+            background: $primary-gradient;
+            color: white;
+
+            &:hover {
+                background: $primary-hover;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+            }
+        }
+
+        &--secondary {
+            background: $secondary-color;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px; // Smaller for icon-only
+            border-radius: 50%; // Round like in image
+
+            &:hover {
+                background: $secondary-hover;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+            }
+
+            @media (max-width: $mobile) {
+                display: none;
+            }
+        }
+    }
+
+    // Dots Indicator
+    &__dots {
+        position: absolute;
+        bottom: 30px;
+        left: auto;
+        right: 30px;
+        transform: none;
+        display: flex;
+        gap: 12px;
+        z-index: 4;
+
+        @media (max-width: $mobile) {
+            bottom: 20px;
+            gap: 8px;
+            right: 15px;
+        }
+    }
+
+    &__dot {
+        width: 24px; // Larger for number
+        height: 24px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+
+        @media (max-width: $mobile) {
+            display: none;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+        &--active {
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    }
+}
+
+// Animations
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+// Responsive Design Enhancements
+@media (max-width: $mobile) {
+    .banner {
+        &__content {
+            padding-top: 60px;
+            padding-bottom: 80px;
+        }
+
+        &__title {
+            margin-bottom: 10px;
+        }
+
+        &__description {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+// Large desktop styles
+@media (min-width: $large-desktop) {
+    .banner {
+        &__content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2%;
+        }
+
+        &__info {
+            max-width: 700px;
+        }
+
+        &__title {
+            font-size: 4.5rem;
+        }
+
+        &__description {
+            font-size: 20px;
+            max-width: 600px;
+        }
+    }
+}
+
+// Enhanced hover effects
+.banner__btn {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    &:hover::before {
+        left: 100%;
+    }
+}
+
+// Accessibility improvements
+.banner__btn:focus,
+.banner__dot:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+}
+
+// Performance optimizations
+.banner__background {
+    will-change: background-image;
+}
+
+.banner__content {
+    will-change: transform;
+}

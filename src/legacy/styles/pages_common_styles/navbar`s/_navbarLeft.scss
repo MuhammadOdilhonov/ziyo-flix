@@ -1,0 +1,223 @@
+
+
+.navbar-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vh;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow: hidden;
+
+    &:hover {
+        width: 280px;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 16px 0;
+    }
+
+    &__logo {
+        padding: 0 22px;
+        margin-bottom: 24px;
+    }
+
+    &__logo-btn {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 12px 0;
+        width: 100%;
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &__logo-icon {
+        min-width: 32px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__logo-text {
+        margin-left: 12px;
+        font-size: 18px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--success-500), var(--primary-500));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.2s ease 0.1s;
+    }
+
+    &:hover &__logo-text {
+        opacity: 1;
+    }
+
+    &__nav,
+    &__search,
+    &__user {
+        padding: 0 12px;
+    }
+
+    &__nav {
+        margin-bottom: 16px;
+    }
+
+    &__search {
+        margin-bottom: 16px;
+    }
+
+    &__spacer {
+        flex: 1;
+    }
+
+    &__nav-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 12px 8px;
+        margin: 2px 0;
+        background: none;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: var(--text-secondary);
+        position: relative;
+
+        &:hover {
+            background: rgba(0, 255, 135, 0.1);
+            color: var(--primary-green);
+        }
+
+        &--active {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+
+            .navbar-left__nav-icon {
+                color: white;
+            }
+        }
+
+        &--logout {
+            &:hover {
+                background: rgba(255, 71, 87, 0.1);
+                color: var(--danger-color);
+            }
+        }
+
+        &--login,
+        &--register {
+            &:hover {
+                background: rgba(0, 102, 255, 0.1);
+                color: var(--primary-blue);
+            }
+        }
+    }
+
+    &__nav-icon {
+        min-width: 35px;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    &__nav-text {
+        margin-left: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.2s ease 0.1s;
+    }
+
+    &:hover &__nav-text {
+        opacity: 1;
+    }
+
+    &__profile-item {
+
+        .navbar-left__nav-icon {
+            min-width: 32px;
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &__user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--border-color);
+    }
+
+    &__user-info {
+        margin-left: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        opacity: 0;
+        transition: opacity 0.2s ease 0.1s;
+    }
+
+    &:hover &__user-info {
+        opacity: 1;
+    }
+
+    &__user-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.2;
+    }
+
+    &__user-email {
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.2;
+    }
+
+    &__notification-icon {
+        position: relative;
+    }
+
+    &__notification-badge {
+        position: absolute;
+        top: 1px;
+        right: 8px;
+        width: 8px;
+        height: 8px;
+        background: var(--notification-color);
+        border-radius: 50%;
+        border: 2px solid var(--light-bg);
+    }
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .navbar-left {
+        display: none;
+    }
+}

@@ -1,0 +1,84 @@
+.teacher-category-detail {
+    padding: var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .detail-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        margin-bottom: var(--space-6);
+    }
+
+    .months-table {
+        display: grid;
+        gap: var(--space-6);
+
+        .month-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            padding: var(--space-4);
+
+            h3 {
+                margin-bottom: var(--space-4);
+            }
+
+            .lessons-table {
+                display: grid;
+                gap: var(--space-2);
+
+                .table-head,
+                .table-row {
+                    display: grid;
+                    grid-template-columns: 2fr 120px 2fr 100px 100px 100px 140px;
+                    gap: var(--space-3);
+                    align-items: center;
+                }
+
+                .table-head {
+                    color: var(--text-secondary);
+                    font-weight: var(--font-weight-semibold);
+                    padding-bottom: var(--space-2);
+                    border-bottom: 1px solid var(--border-primary);
+                }
+
+                .table-row {
+                    padding: var(--space-2) 0;
+                    border-bottom: 1px solid var(--border-primary);
+
+                    .status-badge {
+                        text-transform: capitalize;
+                    }
+
+                    .status-badge.status-pending {
+                        color: var(--warning-600);
+                    }
+
+                    .status-badge.status-approved {
+                        color: var(--success-600);
+                    }
+
+                    .status-badge.status-rejected {
+                        color: var(--error-600);
+                    }
+
+                    .btn-sm {
+                        padding: 6px 10px;
+                        font-size: var(--font-size-sm);
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: var(--space-4);
+
+        .months-table .month-block .lessons-table .table-head,
+        .months-table .month-block .lessons-table .table-row {
+            grid-template-columns: 1fr 100px 1fr 70px 70px 70px 120px;
+        }
+    }
+}

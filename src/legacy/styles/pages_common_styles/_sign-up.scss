@@ -1,0 +1,33 @@
+.auth {
+    &__role-select {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    &__role-option {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border: 1px solid var(--border-color, #e5e7eb);
+        border-radius: 10px;
+        cursor: pointer;
+        user-select: none;
+
+        &.selected {
+            border-color: var(--primary, #2563eb);
+            background: rgba(37, 99, 235, 0.06);
+        }
+
+        input {
+            accent-color: var(--primary, #2563eb);
+        }
+    }
+
+    &__form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+}

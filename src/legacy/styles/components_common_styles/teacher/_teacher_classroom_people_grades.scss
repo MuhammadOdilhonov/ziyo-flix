@@ -1,0 +1,122 @@
+// Teacher Classroom People & Grades - Kun/Tun rejimi
+
+// PEOPLE
+.teacher-classroom-people {
+    .tcp-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+        gap: 1rem;
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    .tcp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        .tcp-header-info h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .tcp-invite-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-500);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+
+    .tcp-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+
+        .tcp-student-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 24px var(--border-color);
+            }
+        }
+    }
+}
+
+// GRADES
+.teacher-classroom-grades {
+    .tcg-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        .tcg-header-info h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+    }
+
+    .tcg-table-wrapper {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        overflow-x: auto;
+
+        .tcg-table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                background: var(--bg-secondary);
+
+                th {
+                    padding: 1rem;
+                    text-align: left;
+                    font-weight: 600;
+                    color: var(--text-primary);
+                }
+            }
+
+            tbody {
+                tr:hover {
+                    background: var(--bg-secondary);
+                }
+
+                td {
+                    padding: 1rem;
+                    border-bottom: 1px solid var(--border-color);
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

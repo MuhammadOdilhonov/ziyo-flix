@@ -1,0 +1,212 @@
+// Top Channels Row Section
+.top-channels-row {
+    padding: 1.75rem 0;
+    background: var(--bg-surface);
+
+    &__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.25rem;
+    }
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin: 0;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    &__view-all {
+        background: var(--primary-gradient);
+        color: var(--text-primary);
+        border: none;
+        padding: 0.7rem 1.7rem;
+        border-radius: 2rem;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+
+        &:hover {
+            background: var(--primary-hover);
+            color: var(--color-light);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.18);
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+    }
+}
+
+// Channel Card
+.channel-card {
+    background: var(--bg-surface);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1.5px solid var(--border-color);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+
+    &:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 32px rgba(0, 102, 255, 0.13);
+        border-color: var(--color-primary);
+    }
+
+    &__banner {
+        position: relative;
+        aspect-ratio: 2/1;
+        overflow: hidden;
+        background: var(--bg-primary);
+    }
+
+    &__banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    &:hover &__banner-image {
+        transform: scale(1.07);
+    }
+
+    &__content {
+        padding: 1rem;
+        position: relative;
+        background: transparent;
+    }
+
+    &__avatar-container {
+        position: absolute;
+        top: -2.2rem;
+        left: 1.2rem;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+    }
+
+    &__avatar {
+        width: 4.2rem;
+        height: 4.2rem;
+        border-radius: 50%;
+        border: 3px solid var(--bg-surface);
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+    }
+
+    &__verified {
+        position: absolute;
+        color: var(--color-success);
+        left: 2rem;
+        top: 2rem;
+        font-size: 1.25rem;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.10));
+
+        @media (min-width:901px) {
+            left: 2.8rem;
+            top: 2.8rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__info {
+        margin-top: 2.7rem;
+    }
+
+    &__name {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.25rem 0;
+        letter-spacing: 0.1px;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+    }
+
+    &__username {
+        color: var(--text-secondary);
+        font-size: 0.93rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    &__category {
+        display: inline-block;
+        background: var(--primary-gradient);
+        color: var(--color-dark);
+        padding: 0.28rem 0.85rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 0.85rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+    }
+
+    &__description {
+        color: var(--text-secondary);
+        font-size: 0.93rem;
+        line-height: 1.5;
+        margin: 0 0 1rem 0;
+    }
+
+    &__stats {
+        display: flex;
+        gap: 1.2rem;
+    }
+
+    &__stat {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.93rem;
+        color: var(--color-warning);
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 900px) {
+    .top-channels-row {
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        &__title {
+            font-size: 1.3rem;
+        }
+    }
+
+    .channel-card {
+        &__content {
+            padding: 0.75rem;
+        }
+
+        &__avatar-container {
+            left: 0.8rem;
+        }
+
+        &__avatar {
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+
+        &__info {
+            margin-top: 2rem;
+        }
+    }
+}
